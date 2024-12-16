@@ -1,7 +1,10 @@
+global:
+  runner:
+    os_image: ubuntu
 
 tasks:
   check-vulvs:
-    runner: razorci/python:3.9
+#    runner: razorci/python:3.9
     steps:
     - checkout
     ## use https://github.com/pypa/advisory-database for security vulnerabilities
