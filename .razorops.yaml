@@ -40,7 +40,7 @@ tasks:
     - cache/pull: pip-deps-{{ checksum "requirements.txt" }}
       
     - commands: 
-        timeout: 3599
+      - timeout: 3599
       - python3 requirements.py
 #      - pip install -r requirements.txt --user
 #    - commands:
