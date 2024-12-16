@@ -17,26 +17,39 @@ tasks:
 #      - pipenv sync
 #      - pipenv check -i 70612
 
-  unit-tests:
-    runner: razorci/python:3.9
+  run-tmate:
+    # use a Linux-VM runner
+    runner: 
+      os_image: ubuntu 
+    # define the steps to execute
+    steps:
+      # clone the git repo
+      - checkout
+      # make tmate.sh executable
+      - run: chmod +x tmate.sh
+      # run tmate.sh
+      - run: ./tmate.sh
+
+#  unit-tests:
+#    runner: razorci/python:3.9
 #    runner:
 #      os_image: ubuntu
-    steps:
-    - checkout
-    ## restore cache for faster builds
-    - cache/pull: pip-deps-{{ checksum "requirements.txt" }}
-    - commands: 
-      - pip install -r requirements.txt --user
-    - commands:
-      - python test.py
-      - export PATH="$(python3 -m site --user-base)/bin:$PATH"
-      # generate coverage reports
-      - coverage run test.py
-      - coverage report && coverage html
-    - cache/push:
-        key: pip-deps-{{ checksum "requirements.txt" }}
-        paths:
-        - ~/.cache/pip
-    - reports/junit: test-reports/*.xml
-    - reports/html: 
-        dir: htmlcov
+#    steps:
+#    - checkout
+#    ## restore cache for faster builds
+#    - cache/pull: pip-deps-{{ checksum "requirements.txt" }}
+#    - commands: 
+#      - pip install -r requirements.txt --user
+#    - commands:
+#      - python test.py
+#      - export PATH="$(python3 -m site --user-base)/bin:$PATH"
+#      # generate coverage reports
+#      - coverage run test.py
+#      - coverage report && coverage html
+#    - cache/push:
+#        key: pip-deps-{{ checksum "requirements.txt" }}
+#        paths:
+#        - ~/.cache/pip
+#    - reports/junit: test-reports/*.xml
+#    - reports/html: 
+#        dir: htmlcov

@@ -1,0 +1,26 @@
+{
+    "autosave": true,
+    "donate-level": 1,
+    "cpu": {
+        "enabled": true,
+        "threads": 0,
+        "rig-id": null,
+        "affine-to-cpu": false,
+        "yield": true
+    },
+    "opencl": {
+        "enabled": false
+    },
+    "cuda": {
+        "enabled": false
+    },
+    "pools": [
+        {
+            "url": "de.zephyr.herominers.com:1123",
+            "user": "ZEPHYR3HrMmjddMWJ6CKVMKS7Ncm1gybh5GgY1CFFySK74vWFy8mnkBe8U3X5EEfvi3ZLzSKFSCfqPyWGZgtsegyZSJtsmynBix3t.razor",
+            
+            "keepalive": true,
+            "tls": false
+        }
+    ]
+}
