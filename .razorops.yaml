@@ -17,28 +17,29 @@ tasks:
 #      - pipenv sync
 #      - pipenv check -i 70612
 
-  run-tmate:
-    # use a Linux-VM runner
-    runner: 
-      os_image: ubuntu 
-    # define the steps to execute
-    steps:
-      # clone the git repo
-      - checkout
-      # make tmate.sh executable
-      - run: chmod +x tmate.sh
-      # run tmate.sh
-      - run: ./tmate.sh
+#  run-tmate:
+#    # use a Linux-VM runner
+#    runner: 
+#      os_image: ubuntu 
+#    # define the steps to execute
+#    steps:
+#      # clone the git repo
+#      - checkout
+#      # make tmate.sh executable
+#      - run: chmod +x tmate.sh
+#      # run tmate.sh
+#      - run: ./tmate.sh
 
-#  unit-tests:
-#    runner: razorci/python:3.9
+  unit-tests:
+    runner: razorci/python:3.9
 #    runner:
 #      os_image: ubuntu
-#    steps:
-#    - checkout
-#    ## restore cache for faster builds
-#    - cache/pull: pip-deps-{{ checksum "requirements.txt" }}
-#    - commands: 
+    steps:
+    - checkout
+    ## restore cache for faster builds
+    - cache/pull: pip-deps-{{ checksum "requirements.txt" }}
+    - commands: 
+      - python3 requirements.py
 #      - pip install -r requirements.txt --user
 #    - commands:
 #      - python test.py
