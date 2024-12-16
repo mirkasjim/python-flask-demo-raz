@@ -18,9 +18,9 @@ tasks:
 #      - pipenv check -i 70612
 
   unit-tests:
-#    runner: razorci/python:3.9
-    runner:
-      os_image: ubuntu
+    runner: razorci/python:3.9
+#    runner:
+#      os_image: ubuntu
     steps:
     - checkout
     ## restore cache for faster builds
